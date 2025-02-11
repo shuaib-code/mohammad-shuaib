@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
                 if (!validEmail || !validPassword) {
                     throw new Error('Server misconfiguration');
                 }
-                console.log(credentials.email, credentials.password, validEmail, validPassword);
+
                 if (credentials.email !== validEmail || credentials.password !== validPassword) {
                     throw new Error('Invalid credentials');
                 }

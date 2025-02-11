@@ -1,50 +1,21 @@
-import SignOutBtn from '@/components/auth/sign-out';
-import { Button } from '@/components/ui/button';
+import { EvervaultCard } from '@/components/ui/evervault-card';
 
-import { FileText, Home, Menu, Settings, X } from 'lucide-react';
+import { PlusIcon } from 'lucide-react';
 
-export default function DashboardPage() {
+export default function page() {
     return (
-        <div className='flex h-screen bg-gray-100'>
-            {/* Sidebar */}
-            <div
-                className={`fixed inset-y-0 left-0 w-64 transform border-r bg-white p-5 shadow-lg transition-transform md:relative md:translate-x-0 ${'-translate-x-64'}`}>
-                <div className='flex items-center justify-between'>
-                    <h2 className='text-xl font-semibold'>Dashboard</h2>
-                    <Button variant='ghost' size='icon' className='md:hidden'>
-                        <X className='h-6 w-6' />
-                    </Button>
-                </div>
-                <nav className='mt-6'>
-                    <a href='#' className='flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200'>
-                        <Home className='h-5 w-5' /> Home
-                    </a>
-                    <a href='#' className='flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200'>
-                        <FileText className='h-5 w-5' /> Reports
-                    </a>
-                    <a href='#' className='flex items-center gap-3 rounded-lg p-3 hover:bg-gray-200'>
-                        <Settings className='h-5 w-5' /> Settings
-                    </a>
-                </nav>
-            </div>
+        <div className='flex min-h-screen w-full items-center justify-center'>
+            <div className='relative mx-auto flex h-[30rem] max-w-sm flex-col items-start border border-black/[0.2] p-4 dark:border-white/[0.2]'>
+                <PlusIcon className='absolute -top-3 -left-3 h-6 w-6 text-black dark:text-white' />
+                <PlusIcon className='absolute -bottom-3 -left-3 h-6 w-6 text-black dark:text-white' />
+                <PlusIcon className='absolute -top-3 -right-3 h-6 w-6 text-black dark:text-white' />
+                <PlusIcon className='absolute -right-3 -bottom-3 h-6 w-6 text-black dark:text-white' />
 
-            {/* Main Content */}
-            <div className='flex flex-1 flex-col'>
-                {/* Top Navbar */}
-                <header className='flex items-center justify-between bg-white p-4 shadow'>
-                    <Button variant='ghost' size='icon' className='md:hidden'>
-                        <Menu className='h-6 w-6' />
-                    </Button>
-                    <h2 className='text-lg font-medium'>Dashboard</h2>
-                    <SignOutBtn />
-                </header>
+                <EvervaultCard text='Welcome Dashboard' className='text-center' />
 
-                {/* Content Area */}
-                <main className='grid grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3'>
-                    <div className='rounded-xl bg-white p-6 shadow'>Card 1</div>
-                    <div className='rounded-xl bg-white p-6 shadow'>Card 2</div>
-                    <div className='rounded-xl bg-white p-6 shadow'>Card 3</div>
-                </main>
+                <h2 className='mt-4 text-center text-lg text-black'>
+                    Welcome to your dashboard! Explore your data and settings with ease.
+                </h2>
             </div>
         </div>
     );

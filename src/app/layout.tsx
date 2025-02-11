@@ -19,8 +19,14 @@ export const metadata: Metadata = {
 const Layout = ({ children }: Readonly<{ children: ReactNode }>) => {
     return (
         <html suppressHydrationWarning lang='en'>
-            <body
-                className={`${robotoSlab.className} bg-background text-foreground max-h-full font-sans antialiased dark:bg-gray-900`}>
+            <head>
+                <title>Mohammad Shuaib | Developer Portfolio</title>
+                <meta name='description' content="Welcome to Mohammad Shuaib's developer portfolio." />
+                <meta name='keywords' content='developer, portfolio, web developer, Mohammad Shuaib' />
+                <meta name='robots' content='index, follow' />
+                <link rel='canonical' href='https://mohammad-shuaib.vercel.app' />
+            </head>
+            <body className={`${robotoSlab.className} text-foreground max-h-full bg-white font-sans antialiased`}>
                 <ProviderWarpper>{children}</ProviderWarpper>
             </body>
         </html>
