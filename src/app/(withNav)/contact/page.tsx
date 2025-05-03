@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { BackgroundBeams } from '@/components/ui/background-beams';
+
 import { Mail } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -13,7 +15,7 @@ export default function ContactPage() {
         setLoading(true);
 
         const formData = new FormData(e.currentTarget);
-        const response = await fetch('/api/contact', {
+        const response = await fetch(`https://mohammad-shuaib.vercel.app/api/contact`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.fromEntries(formData.entries()))
@@ -56,7 +58,9 @@ export default function ContactPage() {
                         rows={4}
                         className='block w-full rounded-xl border border-gray-300 bg-transparent px-4 py-2 text-sm leading-relaxed text-gray-900 placeholder-gray-400 shadow-xs focus:ring-2 focus:ring-yellow-400 focus:outline-none'
                     />
-                    <button className='w-full rounded-full bg-yellow-400 px-6 py-3 text-center text-sm font-medium text-gray-800 shadow-lg hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 focus:outline-none'>
+                    <button
+                        disabled={loading}
+                        className='w-full rounded-full bg-yellow-400 px-6 py-3 text-center text-sm font-medium text-gray-800 shadow-lg hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 focus:outline-none'>
                         Submit
                     </button>
                 </form>
@@ -71,6 +75,7 @@ export default function ContactPage() {
                     </div>
                 </div>
             </div>
+            <BackgroundBeams />
         </div>
     );
 }

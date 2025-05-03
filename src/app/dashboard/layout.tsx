@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Me from '@/assets/pp1.png';
+import SignOutBtn from '@/components/auth/sign-out';
 
 import { HomeIcon, MessageCircle, NotebookText, ProjectorIcon } from 'lucide-react';
 
@@ -43,6 +44,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
                                 );
                             })}
                         </nav>
+                    </div>
+                    <div className='mb-4 px-8'>
+                        <SignOutBtn />
                     </div>
                 </div>
             </div>

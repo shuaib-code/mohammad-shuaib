@@ -1,6 +1,10 @@
+'use client';
+
+import { useState } from 'react';
+
 import Image from 'next/image';
 
-import { MagicCard } from '../magicui/magic-card';
+import { motion } from 'framer-motion';
 
 const skillsData = [
     {
@@ -23,7 +27,7 @@ const skillsData = [
     },
     {
         name: 'Node.js',
-        description: 'Backend API Development.',
+        description: 'Backend API Development for Server.',
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
         alt: 'node'
     },
@@ -41,7 +45,7 @@ const skillsData = [
     },
     {
         name: 'CSS',
-        description: 'Styling and Layout Design.',
+        description: 'Styling and Layout Design for HTML.',
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
         alt: 'css'
     },
@@ -51,7 +55,6 @@ const skillsData = [
         icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
         alt: 'javascript'
     },
-
     {
         name: 'Redux',
         description: 'State Management for JavaScript Applications.',
@@ -85,39 +88,69 @@ const skillsData = [
 ];
 
 export default function Skills() {
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
     return (
-        <div className='mx-auto min-h-screen max-w-[75rem] p-8 md:p-12 lg:p-16'>
-            <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-                <div className='mx-auto max-w-xl text-center'>
-                    <h2 className='bg-gradient-to-r from-gray-800 to-gray-700 bg-clip-text text-3xl leading-tight font-bold text-transparent sm:text-4xl lg:text-5xl'>
-                        My Tech Skills
+        <section className='relative py-20'>
+            {/* Background pattern */}
+            <div className='absolute inset-0 bg-gradient-to-b from-white to-gray-50 opacity-70' />
+            <div
+                className='absolute inset-0'
+                style={{
+                    backgroundImage: 'radial-gradient(#e0e7ff 1px, transparent 1px)',
+                    backgroundSize: '30px 30px'
+                }}
+            />
+
+            <div className='relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+                <div className='mx-auto mb-16 max-w-3xl text-center'>
+                    <h2 className='text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl'>
+                        <span className='bg-gradient-to-r from-gray-600 to-gray-700 bg-clip-text text-transparent'>
+                            My Tech Skills
+                        </span>
                     </h2>
-                    <p className='mt-4 text-lg text-gray-600'>
-                        Here are the key skills I bring to the table and the solutions I’ve implemented
+                    <p className='mt-6 text-xl text-gray-600'>
+                        Here are the key technologies I've mastered to build modern, scalable applications
                     </p>
                 </div>
-                <div className='mt-12 grid grid-cols-2 gap-4 px-6 text-center sm:grid-cols-4 sm:gap-6 lg:grid-cols-6 lg:px-0'>
+
+                <div className='grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
                     {skillsData.map((skill, index) => (
-                        <MagicCard
+                        <motion.div
                             key={index}
-                            gradientColor='#00b4d835'
-                            className='cursor-pointer flex-col items-center justify-center shadow-lg'>
-                            <div className='flex-col items-center justify-center space-y-4 p-6'>
-                                <div className='flex items-center justify-center'>
-                                    <Image
-                                        src={skill.icon}
-                                        alt={skill.alt}
-                                        className='mx-auto object-contain'
-                                        width={60}
-                                        height={60}
-                                    />
+                            className='group relative'
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.05 }}
+                            onHoverStart={() => setHoveredIndex(index)}
+                            onHoverEnd={() => setHoveredIndex(null)}>
+                            <div
+                                className={`relative overflow-hidden rounded-xl bg-white p-6 shadow-md transition-all duration-300 ${hoveredIndex === index ? 'z-10 scale-105 shadow-xl' : 'hover:shadow-lg'} `}>
+                                <div className='absolute inset-0 bg-gradient-to-br from-blue-50 to-indigo-50 opacity-0 transition-opacity duration-300 group-hover:opacity-100' />
+
+                                <div className='relative flex flex-col items-center'>
+                                    <div className='mb-4 flex h-16 w-16 items-center justify-center'>
+                                        <Image
+                                            src={skill.icon || '/placeholder.svg'}
+                                            alt={skill.alt}
+                                            width={60}
+                                            height={60}
+                                            className='object-contain transition-transform duration-300 group-hover:scale-110'
+                                            priority={index < 6}
+                                        />
+                                    </div>
+
+                                    <h3 className='mb-2 text-lg font-semibold text-gray-900'>{skill.name}</h3>
+
+                                    <p className='text-center text-sm text-gray-600 opacity-50 transition-opacity duration-300 group-hover:opacity-100'>
+                                        {skill.description}
+                                    </p>
                                 </div>
-                                <p className='mt-8 text-lg font-semibold text-gray-700'>{skill.name}</p>
                             </div>
-                        </MagicCard>
+                        </motion.div>
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

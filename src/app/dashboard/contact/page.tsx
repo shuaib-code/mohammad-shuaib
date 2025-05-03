@@ -1,6 +1,6 @@
 export default async function Page() {
-    const res = await fetch(`${process.env.NEXT_API_URL}/api/contact`, {
-        next: { revalidate: 100 * 60 }
+    const res = await fetch(`https://mohammad-shuaib.vercel.app/api/contact`, {
+        cache: 'no-store'
     });
     const data = await res.json();
     return (

@@ -27,8 +27,14 @@ export default function Navbar() {
                 <Link href='/contact'>
                     <Button variant='ghost'>Contact</Button>
                 </Link>
-                <Link href='/resume.pdf' target='_blank'>
-                    <button className='rounded-3xl bg-[#ffcd42] px-6 py-2 text-sm font-semibold transition duration-300 ease-in-out hover:bg-[#e6b83b]'>
+                <Link
+                    href='https://drive.google.com/file/d/172WiyrRNKHwNm9nOOjVv8fUnQwOqWqCJ/view?usp=drive_link'
+                    target='_blank'
+                    title='Mohammad Shuaib`s Resume || Full Stack developer'>
+                    {/* <button className='rounded-3xl bg-[#ffcd42] px-6 py-2 text-sm font-semibold transition duration-300 ease-in-out hover:bg-[#e6b83b]'>
+                        Resume
+                    </button> */}
+                    <button className='rounded-3xl bg-gradient-to-r from-blue-500 to-indigo-500 px-6 py-2 text-sm font-semibold text-amber-50 transition duration-300 ease-in-out'>
                         Resume
                     </button>
                 </Link>

@@ -1,20 +1,34 @@
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
-const blogs = [
-    { id: '1', title: 'Next.js 15 Features', content: 'Learn about Next.js 15...' },
-    { id: '2', title: 'Tailwind CSS Tips', content: 'Improve your Tailwind skills...' }
-];
-
 export default async function BlogPost({ params }: { params: Promise<{ id: string }> }) {
-    const id = (await params).id;
-    const blog = blogs.find((post) => post.id === id);
+    const res = await fetch(`https://mohammad-shuaib.vercel.app/api/blog/id?id=${(await params).id}`);
 
-    if (!blog) return notFound();
+    if (!res.ok) {
+        notFound();
+    }
+
+    const { blog } = await res.json();
 
     return (
-        <main className='mx-auto max-w-3xl space-y-6 p-6'>
-            <h1 className='text-4xl font-bold'>{blog.title}</h1>
-            <p className='text-gray-600'>{blog.content}</p>
-        </main>
+        blog && (
+            <div className='mx-auto max-w-2xl p-4'>
+                <h1 className='mb-4 text-3xl font-bold'>{blog.title}</h1>
+                <div className='mb-4'>
+                    <Image
+                        src={blog.image || '/placeholder.svg'}
+                        alt={blog.title}
+                        width={800}
+                        height={400}
+                        priority
+                        className='h-64 w-full rounded-2xl object-cover'
+                    />
+                </div>
+                <p className='mb-4 text-gray-600'>Author: {blog.author}</p>
+                <div className='prose max-w-none'>
+                    <p>{blog.content}</p>
+                </div>
+            </div>
+        )
     );
 }
