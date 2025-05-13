@@ -13,27 +13,27 @@ export default function ContactSection() {
         {
             icon: <Mail className='h-5 w-5 text-blue-500' />,
             label: 'Email',
-            value: 'shuaib-cyclist@gmail.com',
+            value: 'mohammadshuaib233@gmail.com',
             action: 'Copy',
-            onClick: () => copyToClipboard('shuaib-cyclist@gmail.com')
+            onClick: () => copyToClipboard('mohammadshuaib233@gmail.com')
         },
         {
             icon: <Phone className='h-5 w-5 text-blue-500' />,
             label: 'Phone',
-            value: '+1 (555) 123-4567',
+            value: '+8801894-772740',
             action: 'Call',
-            onClick: () => (window.location.href = 'tel:+15551234567')
+            onClick: () => (window.location.href = 'tel:+8801894772740')
         },
         {
             icon: <MapPin className='h-5 w-5 text-blue-500' />,
             label: 'Location',
-            value: 'San Francisco, CA',
+            value: 'Chittagong, Bangladesh',
             action: null
         },
         {
             icon: <Clock className='h-5 w-5 text-blue-500' />,
             label: 'Timezone',
-            value: 'PST (UTC-8)',
+            value: 'BST (UTC+6)',
             action: null
         }
     ];

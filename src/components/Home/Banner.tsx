@@ -33,11 +33,7 @@ export default function Banner() {
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className='mt-3 text-2xl font-semibold'>
-                            Hi! I am{' '}
-                            <Cover className='bg-gradient-to-r from-blue-500 to-indigo-500 px-2 py-1 text-white'>
-                                {' '}
-                                Mohammad Shuaib{' '}
-                            </Cover>
+                            Hi! I am <Cover className='px-2 py-1 text-gray-900'> Mohammad Shuaib </Cover>
                         </motion.div>
                     </div>
                 </motion.div>
@@ -47,10 +43,8 @@ export default function Banner() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                     className='mx-auto max-w-3xl text-center'>
-                    <h1 className='block text-4xl font-bold sm:text-4xl md:text-5xl lg:text-6xl'>
-                        <span className='bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent'>
-                            Crafting Scalable and Modern Web Experiences
-                        </span>
+                    <h1 className='block text-4xl font-medium text-gray-700 sm:text-4xl md:text-5xl lg:text-6xl'>
+                        Crafting Scalable and Modern Web Experiences
                     </h1>
                 </motion.div>
 
